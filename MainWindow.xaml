@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Boca_Danut_Lab2"
         mc:Ignorable="d"
-        Title="Virtual DoughnutsFactory" Height="450" Width="800" ResizeMode="NoResize" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
+        Title="Virtual DoughnutsFactory" Height="450" Width="800" ResizeMode="NoResize" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Loaded="frmMain_Loaded">
     <Grid>
         <Label x:Name="lblTitle" Content="Doughnuts-Bake &amp; Sale" HorizontalAlignment="Left" Margin="244,27,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
         <GroupBox x:Name="gbRaised" Header="Raised" FontWeight="Bold" Margin="64,74,505,217">
@@ -28,7 +28,7 @@
         <GroupBox x:Name="gbSale" Header="Current Sale" Margin="37,240,10,10" FontWeight="Bold">
             <Canvas>
                 <Label x:Name="lblQuantity" Content="Quantity" Canvas.Left="10" Canvas.Top="10" FontWeight="Normal"/>
-                <TextBox x:Name="txtQuantity" Canvas.Left="85" Canvas.Top="10" Text="0" TextWrapping="Wrap" Width="36" FontWeight="Normal" Height="25"/>
+                <TextBox x:Name="txtQuantity" Canvas.Left="85" Canvas.Top="10" Text="0" TextWrapping="Wrap" Width="36" FontWeight="Normal" Height="25" KeyUp="txtQuantity_KeyPress"/>
                 <Label x:Name="lblType" Content="Type" Canvas.Left="170" Canvas.Top="5" FontWeight="Normal"/>
                 <ComboBox x:Name="cmbType" Canvas.Left="210" Canvas.Top="10" Width="120" FontWeight="Normal"/>
                 <Label x:Name="lblPrice" Content="Price" Canvas.Left="397" Canvas.Top="3" FontWeight="Normal"/>
@@ -41,27 +41,20 @@
                 <Button x:Name="btnCheckOut" Content="Check Out" Canvas.Left="627" Canvas.Top="112" FontWeight="Bold" Height="39" Width="86"/>
             </Canvas>
         </GroupBox>
-        <Menu Margin="10,10,579,386">
-            <MenuItem Header="File" Height="14" Width="65">
-                <MenuItem Header="Exit"/>
+        <Menu x:Name="mnuMain" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="131" Margin="0,26,0,0">
+            <MenuItem Header="File">
+                 <MenuItem Header="Exit" Click="exitToolStripMenuItem_Click"/>
             </MenuItem>
-            <MenuItem Header="Doughnuts" RenderTransformOrigin="0.5,0.5" Height="16" Width="91">
-                <MenuItem.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="0.312"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </MenuItem.RenderTransform>
+            <MenuItem Header="_Doughnuts">
+                
                 <MenuItem Header="Make">
                     <MenuItem Header="Raised">
-                        <MenuItem x:Name="glazedMenuItem" Header="Glazed"/>
-                        <MenuItem x:Name="sugarMenuItem" Header="Sugar"/>
+                        <MenuItem x:Name="glazedToolStripMenuItem" Header="Glazed" Click="glazedToolStripMenuItem_Click" IsCheckable="True"/>
+                        <MenuItem x:Name="sugarToolStripMenuItem" Header="Sugar" IsCheckable="True" Click="sugarToolStripMenuItem_Click"  />
                     </MenuItem>
                     <MenuItem Header="Filled"/>
                 </MenuItem>
-                <MenuItem Header="Stop"/>
+                <MenuItem x:Name="mnuStop" Header="Stop" Click="stopToolStripMenuItem_Click" />
             </MenuItem>
         </Menu>
 
